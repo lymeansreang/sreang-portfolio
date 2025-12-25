@@ -106,7 +106,7 @@ export default function Home() {
             - Tutorial link of each feature
 
             Integrate Vendor SDK into Acleda Mobile."
-            technologies={["Swift", "UIKit", "GraphQL", "Firebase"]}
+            technologies={["Swift", "Swift UIKit"]}
             link="#"
           />
         </section>
@@ -123,7 +123,7 @@ export default function Home() {
               title="Exchange Rate"
               description="A hardware-accelerated design system library for iOS focused on fluid interactions and micro-gestures."
               imageUrl="/exchange.jpeg"
-              tags={["SwiftUI", "Metal", "Package Manager"]}
+              tags={["Swift", "Swift UIKit"]}
             />
             {/* <ProjectCard
               title="Aether Dashboard"
