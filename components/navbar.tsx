@@ -40,7 +40,7 @@ export function Navbar() {
     <nav className="fixed left-0 top-0 bottom-0 w-80 p-12 flex flex-col justify-between hidden lg:flex z-50">
       <div>
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-          <h1 className="text-5xl font-bold tracking-tight text-white mb-3">Alex Rivera</h1>
+          <h1 className="text-5xl font-bold tracking-tight text-white mb-3">Ly Mean Sreang</h1>
           <h2 className="text-xl font-medium text-primary mb-4">iOS & Full-Stack Developer</h2>
           <p className="text-muted-foreground leading-relaxed max-w-xs text-balance">
             I build high-performance native iOS apps and scalable web architectures with a focus on immersive user
@@ -74,8 +74,8 @@ export function Navbar() {
       </div>
 
       <div className="flex gap-6">
-        <SocialLink href="#" icon={<Github className="w-6 h-6" />} />
-        <SocialLink href="#" icon={<Linkedin className="w-6 h-6" />} />
+        <SocialLink href="https://github.com/lymeansreang" icon={<Github className="w-6 h-6" />} />
+        <SocialLink href="https://www.linkedin.com/in/ly-mean-sreang-28113a2ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app](https://www.linkedin.com/in/ly-mean-sreang-28113a2ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" icon={<Linkedin className="w-6 h-6" />} />
         <SocialLink href="#" icon={<Mail className="w-6 h-6" />} />
       </div>
     </nav>
