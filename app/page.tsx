@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { ExperienceCard } from "@/components/experience-card";
 import { ProjectCard } from "@/components/project-card";
 import { motion } from "framer-motion";
+import { ContactSection } from "@/components/contact-section";
 
 export default function Home() {
   return (
@@ -133,6 +134,9 @@ export default function Home() {
             /> */}
           </div>
         </section>
+
+        {/* Contact Section */}
+        <ContactSection />
 
         <footer className="text-sm text-muted-foreground/50 pb-24">
           <p>
