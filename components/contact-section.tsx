@@ -15,14 +15,41 @@ import Button from "./ui/button"
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        alert('Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('An error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -55,7 +82,7 @@ export function ContactSection() {
             <CheckCircle2 className="w-12 h-12 text-primary mb-4" />
             <h4 className="text-xl font-semibold text-white mb-2">Message Sent!</h4>
             <p className="text-muted-foreground mb-6">Thanks for reaching out. I'll get back to you shortly.</p>
-            <Button variant="outline" onClick={() => setIsSubmitted(false)}>
+            <Button variant="secondary" onClick={() => setIsSubmitted(false)}>
               Send another message
             </Button>
           </motion.div>
@@ -69,7 +96,14 @@ export function ContactSection() {
                 >
                   Name
                 </label>
-                <Input id="name" placeholder="Alex Rivera" required className="bg-white/5 border-white/10" />
+                <Input
+                  id="name"
+                  placeholder="Alex Rivera"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="bg-white/5 border-white/10"
+                />
               </div>
               <div className="space-y-2">
                 <label
@@ -83,6 +117,8 @@ export function ContactSection() {
                   type="email"
                   placeholder="alex@example.com"
                   required
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="bg-white/5 border-white/10"
                 />
               </div>
@@ -94,7 +130,14 @@ export function ContactSection() {
               >
                 Subject
               </label>
-              <Input id="subject" placeholder="Project Inquiry" required className="bg-white/5 border-white/10" />
+              <Input
+                id="subject"
+                placeholder="Project Inquiry"
+                required
+                value={formData.subject}
+                onChange={handleInputChange}
+                className="bg-white/5 border-white/10"
+              />
             </div>
             <div className="space-y-2">
               <label
@@ -107,6 +150,8 @@ export function ContactSection() {
                 id="message"
                 placeholder="Tell me about your project..."
                 required
+                value={formData.message}
+                onChange={handleInputChange}
                 className="min-h-[150px] bg-white/5 border-white/10"
               />
             </div>

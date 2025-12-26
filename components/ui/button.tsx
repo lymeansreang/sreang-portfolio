@@ -1,7 +1,7 @@
 import React from 'react'
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline'
   size?: 'sm' | 'md' | 'lg'
 }
 
@@ -14,6 +14,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 disabled:opacity-50',
       secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-300 disabled:opacity-50',
       ghost: 'bg-transparent text-gray-900 hover:bg-gray-100 focus:ring-gray-300 disabled:opacity-50',
+      outline: 'bg-transparent border border-gray-300 text-gray-900 hover:bg-gray-50 focus:ring-gray-300 disabled:opacity-50',
     }
 
     const sizes: Record<string, string> = {
