@@ -2,12 +2,17 @@
 
 import { Hud } from "@/components/hud"
 import { BugDefense } from "@/components/game/bug-defense"
-import { AboutSection, WavesSection, SeedsSection } from "@/components/sections"
+import {
+  AboutSection, StatsSection, SkillsSection,
+  WavesSection, SeedsSection, EducationSection,
+  TestimonialsSection, FunFactsSection,
+} from "@/components/sections"
 import { MailboxSection } from "@/components/mailbox"
 import { Cloud, GrassEdge } from "@/components/sprites/props"
 import { Plant } from "@/components/sprites/plants"
 import { Bug } from "@/components/sprites/bugs"
 import { profile } from "@/lib/portfolio"
+import { BlurText, TextShimmer, ClickSpark } from "@/components/animations"
 
 export default function Home() {
   const skip = () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
@@ -32,10 +37,14 @@ export default function Home() {
             <div className="mb-6 flex flex-col items-center text-center">
               <span className="chip mb-2">Now playing · Bug Defense</span>
               <h1 id="hero-h" className="font-display text-4xl leading-none sm:text-6xl">
-                {profile.name}
+                <BlurText text={profile.name} stagger={0.05} />
               </h1>
-              <p className="mt-2 font-display text-xl text-lawn-800 sm:text-2xl">{profile.title}</p>
-              <p className="mt-2 max-w-xl font-semibold text-ink-soft">{profile.tagline}</p>
+              <p className="mt-2 font-display text-xl text-lawn-800 sm:text-2xl">
+                <BlurText text={profile.title} delay={0.4} stagger={0.03} />
+              </p>
+              <p className="mt-2 max-w-xl font-semibold">
+                <TextShimmer className="text-ink-soft" duration={4}>{profile.tagline}</TextShimmer>
+              </p>
             </div>
             <BugDefense onSkip={skip} />
           </div>
@@ -44,12 +53,17 @@ export default function Home() {
         <div className="bg-sky-100">
           <GrassEdge />
         </div>
-        <div className="border-t-8 border-lawn-500 bg-mint">
+        <ClickSpark className="border-t-8 border-lawn-500 bg-mint">
           <AboutSection />
+          <StatsSection />
+          <SkillsSection />
           <WavesSection />
           <SeedsSection />
+          <EducationSection />
+          <TestimonialsSection />
+          <FunFactsSection />
           <MailboxSection />
-        </div>
+        </ClickSpark>
       </main>
 
       <footer className="relative bg-soil-700 text-paper">

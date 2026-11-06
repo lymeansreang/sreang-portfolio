@@ -53,7 +53,7 @@ export function MailboxSection() {
 
   return (
     <section id="mailbox" aria-labelledby="mail-h" className="mx-auto max-w-5xl px-4 py-16">
-      <Signpost level="Level 4" title="Garden Mailbox" id="mail-h" />
+      <Signpost level="Level 8" title="Garden Mailbox" id="mail-h" />
       <div className="paper grid items-center gap-6 p-6 sm:p-8 md:grid-cols-[220px_1fr]">
         <div className="flex flex-col items-center text-center">
           <Mailbox flagUp={state === "sent"} className="h-44 w-40" />
